@@ -1,0 +1,29 @@
+#cpu,
+#memory,
+#temperature,
+#custom-gpu-usage {
+  background-color: @surface0;
+  padding: 0.5rem 1rem;
+  margin: 5px 0;
+}
+
+
+#cpu {
+  color: @pink;
+  border-radius: 1rem 0rem 0rem 1rem;
+  margin-left: 0.5rem;
+}
+
+#custom-gpu-usage {
+  color: @pink;
+}
+
+#memory {
+  color: @pink;
+}
+
+#temperature {
+  color: @pink;
+  border-radius: 0rem 1rem 1rem 0rem;
+  margin-right: 0.5rem;
+}

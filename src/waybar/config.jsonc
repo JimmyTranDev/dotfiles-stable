@@ -1,0 +1,219 @@
+{
+  "layer": "top", // Waybar at top layer
+  "position": "top", // Waybar position (top|bottom|left|right)
+  // "width": 1280, // Waybar width
+  // Choose the order of the modules
+  "modules-left": [
+    "custom/logo",
+    "hyprland/workspaces",
+    "custom/music"
+  ],
+  "modules-center": [
+    "clock",
+    "custom/weather"
+  ],
+  "modules-right": [
+    "network",
+    "bluetooth",
+    "hyprland/language",
+    "keyboard-state",
+    "cpu",
+    "custom/gpu-usage",
+    "memory",
+    "temperature",
+    "custom/updates",
+    "custom/notification",
+    "pulseaudio",
+    "cava",
+    "custom/logout",
+    "custom/restart",
+    "custom/power",
+    "tray"
+  ],
+  "custom/gpu-usage": {
+    "exec": "nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits",
+    "format": "󰜨 {}%",
+    "return-type": "",
+    "interval": 1
+  },
+  "custom/updates": {
+    "format": "{} {icon}",
+    "return-type": "json",
+    "format-icons": {
+      "has-updates": "󱍷",
+      "updated": "󰂪"
+    },
+    "exec-if": "which waybar-module-pacman-updates",
+    "exec": "waybar-module-pacman-updates  --interval-seconds 5 --network-interval-seconds 300"
+  },
+  "custom/weather": {
+    "exec": "python ~/Programming/dotfiles/src/waybar/scripts/weather.py",
+    "restart-interval": 300,
+    "return-type": "json",
+    "on-click": "xdg-open https://weather.com/en-IN/weather/today/l/56cd846e024891ed22fa073b476be291b362be12ad0a5942d74274442ab2360f"
+    // "format-alt": "{alt}",
+  },
+  "custom/logo": {
+    "tooltip": false,
+    "format": "󰣇 "
+  },
+  "network": {
+    "interface": "wlp2s0",
+    "format": "{ifname}",
+    "format-wifi": "{essid} ({signalStrength}%) ",
+    "format-ethernet": "{ipaddr}/{cidr} 󰊗",
+    "format-disconnected": "", //An empty format will hide the module.
+    "tooltip-format": "{ifname} via {gwaddr} 󰊗",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+    "tooltip-format-ethernet": "{ifname} ",
+    "tooltip-format-disconnected": "Disconnected",
+    "max-length": 50
+  },
+  "cava": {
+    //  "cava_config": "$XDG_CONFIG_HOME/cava/cava.conf",
+    "framerate": 30,
+    "autosens": 1,
+    "sensitivity": 100,
+    "bars": 14,
+    "lower_cutoff_freq": 50,
+    "higher_cutoff_freq": 10000,
+    "method": "pulse",
+    "source": "auto",
+    "stereo": true,
+    "reverse": false,
+    "bar_delimiter": 0,
+    "monstercat": false,
+    "waves": false,
+    "noise_reduction": 0.77,
+    "input_delay": 2,
+    "format-icons": [
+      "▁",
+      "▂",
+      "▃",
+      "▄",
+      "▅",
+      "▆",
+      "▇",
+      "█"
+    ],
+    "actions": {
+      "on-click-right": "mode"
+    }
+  },
+  "temperature": {
+    // "thermal-zone": 2,
+    // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+    // "critical-threshold": 80,
+    // "format-critical": "{temperatureC}°C ",
+    "format": "{temperatureC}°C "
+  },
+  "cpu": {
+    "interval": 10,
+    "format": "{}% ",
+    "max-length": 10
+  },
+  "memory": {
+    "interval": 30,
+    "format": "{}% ",
+    "max-length": 10
+  },
+  "bluetooth": {
+    "format": " {status}",
+    "format-connected": " {device_alias}",
+    "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+    // "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
+    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
+  },
+  "hyprland/language": {
+    "format": "{}  ",
+    "min-length": 5,
+    "tooltip": false,
+    "on-click": "swaymsg input type:keyboard xkb_switch_layout next"
+  },
+  "keyboard-state": {
+    //"numlock": true,
+    "capslock": true,
+    "format": "{name} {icon} ",
+    "format-icons": {
+      "locked": " ",
+      "unlocked": " "
+    }
+  },
+  "hyprland/workspaces": {
+    "disable-scroll": true,
+    "sort-by-name": true,
+    "format": " {icon} ",
+    "format-icons": {
+      "default": ""
+    }
+  },
+  "custom/music": {
+    "format": "  {}",
+    "escape": true,
+    "interval": 5,
+    "tooltip": false,
+    "exec": "playerctl metadata --format='{{ title }}'",
+    "on-click": "playerctl play-pause",
+    "max-length": 50
+  },
+  "tray": {
+    "icon-size": 21,
+    "spacing": 10
+  },
+  "custom/notification": {
+    "tooltip": false,
+    "format": "{} {icon}",
+    "format-icons": {
+      "notification": "<span foreground='red'><sup></sup></span>",
+      "none": "",
+      "dnd-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-none": "",
+      "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "inhibited-none": "",
+      "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-inhibited-none": ""
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
+  },
+  "pulseaudio": {
+    // "scroll-step": 1, // %, can be a float
+    "format": "{icon} {volume}%",
+    "format-muted": "",
+    "format-icons": {
+      "default": [
+        "",
+        " ",
+        " "
+      ]
+    },
+    "on-click": "pavucontrol"
+  },
+  "clock": {
+    "timezone": "Europe/Oslo",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "format": "󰥔  {:%H:%M         %d-%m-%Y}"
+  },
+  "custom/logout": {
+    "tooltip": false,
+    "on-click": "hyprctl dispatch exit",
+    "format": "󰍃 "
+  },
+  "custom/restart": {
+    "tooltip": false,
+    "on-click": "systemctl reboot &",
+    "format": " "
+  },
+  "custom/power": {
+    "tooltip": false,
+    "on-click": "systemctl poweroff &",
+    "format": " "
+  }
+}

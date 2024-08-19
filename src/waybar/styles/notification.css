@@ -1,0 +1,19 @@
+#custom-notification,
+#custom-updates {
+  background-color: @surface0;
+  padding: 0.5rem 1rem;
+  margin: 5px 0;
+}
+
+#custom-notification {
+  color: @green;
+  border-radius: 0rem 1rem 1rem 0rem;
+  margin-right: 0.5rem;
+}
+
+
+#custom-updates {
+  color: @green;
+  border-radius: 1rem 0rem 0rem 1rem;
+  margin-left: 0.5rem;
+}

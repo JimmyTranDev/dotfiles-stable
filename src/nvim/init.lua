@@ -1,0 +1,6 @@
+require("core.lazy")
+require("core.options")
+require("core.plugins")
+require("core.commands")
+require("core.statusline")
+require("core.keymaps")

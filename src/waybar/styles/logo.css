@@ -1,0 +1,12 @@
+#custom-logo {
+  background-color: @surface0;
+  padding: 0.5rem 1rem;
+  margin: 5px 0;
+}
+
+#custom-logo {
+  color: @blue;
+  border-radius: 1rem 1rem 1rem 1rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}

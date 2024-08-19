@@ -1,0 +1,30 @@
+@import "./styles/mocha.css";
+
+* {
+  font-family: NotoSansMono Nerd Font;
+  font-size: 17px;
+  min-height: 0;
+}
+
+#waybar {
+  background: rgba(24, 24, 37, 0.4);
+  color: @text;
+}
+
+window#waybar > box {
+  min-height: 48px;
+  /* padding: 8px; */
+  /* margin: 8px; */
+}
+
+@import "./styles/music.css";
+@import "./styles/system.css";
+@import "./styles/tray.css";
+@import "./styles/workspace.css";
+@import "./styles/time.css";
+@import "./styles/sound.css";
+@import "./styles/notification.css";
+@import "./styles/language.css";
+@import "./styles/performance.css";
+@import "./styles/network.css";
+@import "./styles/logo.css";

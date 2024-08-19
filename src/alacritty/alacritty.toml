@@ -1,0 +1,12 @@
+import = [
+  "~/.config/alacritty/catppuccin-mocha.toml"
+]
+
+[font]
+size = 14.0
+normal = { family = "FiraCode Nerd Font", style = "Regular" }
+
+[shell]
+# program = "/bin/nu"
+program = "/bin/zsh"
+args = ["-l", "-c", "zellij attach --index 0 || zellij"]
