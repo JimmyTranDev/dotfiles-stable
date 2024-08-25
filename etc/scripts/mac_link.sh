@@ -4,11 +4,10 @@ configsDirs=(
   "skhd"
   "yabai"
   "btop"
-  "tmux"
-  "alacritty"
-  "zellij"
   "nushell"
   "starship.toml"
+  "alacritty"
+  "zellij"
 )
 
 for dir in ${configsDirs[@]}; do
@@ -18,7 +17,7 @@ done
 
 homeDirs=(
   ".zshrc"
-  ".westerm.lua"
+  ".tmux.conf"
 )
 
 for dir in ${homeDirs[@]}; do
@@ -34,7 +33,7 @@ hiddenHomeDirs=(
 
 for dir in ${hiddenHomeDirs[@]}; do
   rm $HOME/$dir 
-  ln -s $HOME/Programming/dotfiles/hidden/$dir $HOME
+  ln -s $HOME/Programming/dotfiles/src/nvim/lua/hidden/$dir $HOME
 done
 
 

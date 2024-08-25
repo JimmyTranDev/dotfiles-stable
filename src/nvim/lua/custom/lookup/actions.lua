@@ -12,7 +12,7 @@ local function openTechnicalLink(technicalLinkType)
       if repoName == nil then
         return
       end
-      local technicalLink = constants.technicalLinkCollection[repoName]
+      local technicalLink = constants.repoNameToTechnicalLink[repoName]
       if technicalLink == nil then
         print("No technical link found for repo: " .. repoName)
         return
@@ -35,7 +35,7 @@ local function openTechnicalLinkCurrent(technicalLinkType)
       return
     end
 
-    local technicalLink = constants.technicalLinkCollection[repoName]
+    local technicalLink = constants.repoNameToTechnicalLink[repoName]
     if technicalLink == nil then
       print("No technical link found for repo: " .. repoName)
       return
@@ -59,7 +59,7 @@ local function openUsefulLink()
     if linkName == "" then
       return
     end
-    lookupUtils.openUrlInBrowser(constants.linkNameToUsefulLink[linkName])
+    lookupUtils.openUrlInBrowser(constants.usefulLink[linkName])
   end)
 end
 

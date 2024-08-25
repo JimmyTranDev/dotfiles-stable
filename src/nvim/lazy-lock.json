@@ -81,10 +81,10 @@
   "vim-dadbod-ui": { "branch": "master", "commit": "0f51d8de368c8c6220973e8acd156d17da746f4c" },
   "vim-fugitive": { "branch": "master", "commit": "0444df68cd1cdabc7453d6bd84099458327e5513" },
   "vim-suda": { "branch": "master", "commit": "b97fab52f9cdeabe2bbb5eb98d82356899f30829" },
-  "vim-table-mode": { "branch": "master", "commit": "e4365bde024f73e205eefa2fb78e3029ddb92ea9" },
   "vim-visual-multi": { "branch": "master", "commit": "38b0e8d94a5499ccc17d6159763d32c79f53417b" },
   "which-key.nvim": { "branch": "main", "commit": "6c1584eb76b55629702716995cca4ae2798a9cca" },
   "wilder.nvim": { "branch": "master", "commit": "679f348dc90d80ff9ba0e7c470c40a4d038dcecf" },
   "windows.nvim": { "branch": "main", "commit": "c7492552b23d0ab30325e90b56066ec51242adc8" },
-  "workspace-diagnostics.nvim": { "branch": "main", "commit": "29ed948a84076e9bed63ce298b5cc5264b72b341" }
+  "workspace-diagnostics.nvim": { "branch": "main", "commit": "29ed948a84076e9bed63ce298b5cc5264b72b341" },
+  "yazi.nvim": { "branch": "main", "commit": "df7c476ee9a844603773f662de7c17e7994c378e" }
 }

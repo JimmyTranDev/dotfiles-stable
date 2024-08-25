@@ -5,7 +5,7 @@ local fileActions = require("custom.files.actions")
 local lookupActions = require("custom.lookup.actions")
 local loggingActions = require("custom.logging.actions")
 
-local TechnicalLinkType = require("custom.lookup.constants").TechnicalLinkType
+local TechnicalLinkType = require("custom.lookup.constants").technicalLinkField
 local openTechnicalLink = lookupActions.openTechnicalLink
 local openTechnicalLinkCurrent = lookupActions.openTechnicalLinkCurrent
 

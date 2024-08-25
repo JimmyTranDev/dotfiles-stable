@@ -52,6 +52,7 @@ alias azl='~/Programming/dotfiles/etc/scripts/azure_login.sh'
 alias rb='sudo nixos-rebuild switch --flake $HOME/Programming/dotfiles/etc/nixos#default'
 alias fl='nix develop ~/Programming/dotfiles/etc/nixos/shells/flutter --command zsh'
 alias ll="ls -la"
+alias nvm="fnm"
 alias :q="exit"
 
 ##########################################################
@@ -63,7 +64,7 @@ alias :q="exit"
 
 function select_project() {
   local selected_project=$(ls ~/Programming/ | fzf)
-  echo | cd "$HOME/Programming/$selected_project"
+  cd "$HOME/Programming/$selected_project"
   nvim
 }
 

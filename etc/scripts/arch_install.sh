@@ -11,12 +11,13 @@ packages=(
   "thunderbird"
   "gparted"
   "yazi"
-  "alacritty"
   "nushell"
   "starship"
-  "zellij"
   "firefox"
   "kitty"
+  "tmux"
+  "zellij"
+  "alacritty"
 
   # Utils
   "unzip"
@@ -63,6 +64,7 @@ packages=(
   # Fonts
   "ttf-firacode-nerd"
   "ttf-noto-nerd"
+  "ttf-iosevka-nerd"
   "noto-fonts-cjk"
   "noto-fonts-emoji"
   "noto-fonts-extra"

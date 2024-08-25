@@ -1,8 +1,6 @@
 local expand = vim.fn.expand
 local HOME = expand('$HOME')
-local NEOVIM_DIR = expand('$HOME/.config/nvim/')
 local NEOVIM_STATE_DIR = expand('$HOME/.local/state/nvim/')
-local DOTFILES_DIR = expand('$HOME/Programming/dotfiles')
 local PROGRAMMING_DIR = expand('$HOME/Programming')
 
 local colors = {
@@ -35,10 +33,8 @@ local colors = {
 }
 
 return {
-  NEOVIM_DIR = NEOVIM_DIR,
   HOME = HOME,
   NEOVIM_STATE_DIR = NEOVIM_STATE_DIR,
-  DOTFILES_DIR = DOTFILES_DIR,
   PROGRAMMING_DIR = PROGRAMMING_DIR,
   colors = colors
 }

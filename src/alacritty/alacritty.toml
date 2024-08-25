@@ -10,3 +10,7 @@ normal = { family = "FiraCode Nerd Font", style = "Regular" }
 # program = "/bin/nu"
 program = "/bin/zsh"
 args = ["-l", "-c", "zellij attach --index 0 || zellij"]
+# args = ["-l", "-c", "tmux attach || tmux"]
+
+[window]
+  option_as_alt = "Both"

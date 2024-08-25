@@ -1,12 +1,3 @@
-local function lspFormatByFiletype()
-  if vim.bo.filetype == "python" then
-    vim.fn.execute('silent! black %')
-    return;
-  end
-
-  vim.lsp.buf.format()
-end
-
 local function renameFile()
   local source_file, target_file
 
@@ -46,6 +37,5 @@ end
 
 
 return {
-  lspFormatByFiletype = lspFormatByFiletype,
   renameFile = renameFile
 }

@@ -14,6 +14,8 @@ brew install tree
 brew install yazi
 brew install starship
 brew install fnm
+brew install tmux
+brew install zellij
 
 # Yazi
 brew install fzf

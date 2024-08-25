@@ -1,6 +1,6 @@
 local urlUtils = require('custom.url.utils')
 local fileUtils = require('custom.files.utils')
-local jiraUrl = require('links.jira').jiraUrl
+local jiraUrl = require('hidden.jira').jiraUrl
 
 local function openUrlInBrowser(url)
   fileUtils.open(url)

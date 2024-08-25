@@ -1,4 +1,4 @@
-local TechnicalLinkType = {
+local technicalLinkField = {
   REPO = "repo",
   DIFF = "diff",
   TEST_LOGS = "testLogs",
@@ -12,24 +12,23 @@ local TechnicalLinkType = {
   DESIGN = "design",
 }
 
--- TODO: fix naming
-local technicalLinks = require('links.technical-links').technicalLinks
-local usefulLinks = require('links.useful-links').usefulLinks
+local repoNameToTechnicalLink = require('hidden.technical-links')
+local usefulLink = require('hidden.useful-links')
 
 local githubRepoNames = {}
-for repoName, _ in pairs(technicalLinks) do
+for repoName, _ in pairs(repoNameToTechnicalLink) do
   table.insert(githubRepoNames, repoName)
 end
 
 local usefulLinkNames = {}
-for key in pairs(usefulLinks) do
+for key in pairs(usefulLink) do
   table.insert(usefulLinkNames, key)
 end
 
 return {
-  technicalLinkCollection = technicalLinks,
-  TechnicalLinkType = TechnicalLinkType,
-  linkNameToUsefulLink = usefulLinks,
+  repoNameToTechnicalLink = repoNameToTechnicalLink,
+  technicalLinkField = technicalLinkField,
+  usefulLink = usefulLink,
   usefulLinkNames = usefulLinkNames,
   githubRepoNames = githubRepoNames,
 }
