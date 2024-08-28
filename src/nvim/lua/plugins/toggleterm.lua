@@ -38,9 +38,6 @@ return {
     { mode = "t", "jk", [[<C-\><C-n>]], desc = "Terminal Escape", silent = true },
     { mode = "t", "<C-w>", [[<C-\><C-n><C-w>]], desc = "Terminal Escape", silent = true },
 
-    -- Linux
-    { mode = "n", "<leader>tlr", ':1TermExec cmd="rb"<CR>', desc = "Nixos Rebuild", silent = true },
-
     -- Npm
     { mode = "n", "<leader>tns", ':1TermExec cmd="npm start"<CR>', desc = "Npm Start", silent = true },
     { mode = "n", "<leader>tnd", ':1TermExec cmd="npm run dev"<CR>', desc = "Npm Dev", silent = true },

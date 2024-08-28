@@ -13,13 +13,113 @@ local getLastCommitMessage = function()
   return removeShaFromCommitMessage(cleanedMessage)
 end
 
-local function getJiraTicketFromBranchName(branchName)
+local function getJiraTicket(branchName)
   local jiraTicket = string.match(branchName, "[a-z]+/([A-Z]+-[0-9]+).*")
   return jiraTicket or ""
 end
 
+local getCurrentRemoteBranchName = function()
+  local branch = vim.fn.system("git rev-parse --abbrev-ref --symbolic-full-name @{u}")
+  return vim.fn.substitute(branch, '\n', '', '')
+end
+
+local function diffBranchCommits(originBranch, targetBranch)
+  local diff = string.format("%s..%s", originBranch, targetBranch)
+  local fugitive_command = string.format("Git log %s", diff)
+  vim.cmd(fugitive_command)
+end
+
+local function getRepoBranchNames()
+  local branchNames = {}
+  for _, branchName in ipairs(vim.fn.systemlist("git branch --list")) do
+    local cleanedBranchName = string.gsub(branchName, "* ", "")
+    table.insert(branchNames, cleanedBranchName)
+  end
+
+  return branchNames;
+end
+
+local function getCommitLineToSha(isAll)
+  local fugitive_command
+  if isAll then
+    fugitive_command = "git log --oneline --all"
+  else
+    fugitive_command = "git log --oneline"
+  end
+
+  local commitLines = vim.fn.systemlist(fugitive_command)
+
+  local commitLineToSha = {}
+  for _, commitLine in ipairs(commitLines) do
+    local sha = string.sub(commitLine, 1, 7)
+    commitLineToSha[commitLine] = sha
+  end
+  return commitLineToSha
+end
+
+local function getTags()
+  local fugitive_command = "git tag -l"
+  local tags = vim.fn.systemlist(fugitive_command)
+  return tags
+end
+
+local function getRemoteBranchNames()
+  local branchNames = {}
+  for _, branchName in ipairs(vim.fn.systemlist("git branch -r")) do
+    local cleanedBranchName = string.gsub(branchName, "*", "")
+    table.insert(branchNames, cleanedBranchName)
+  end
+
+  return branchNames;
+end
+
+local function getStashLineToIndex()
+  local fugitive_command = "git stash list"
+  local stashLines = vim.fn.systemlist(fugitive_command)
+
+  local stashLineToIndex = {}
+  for _, stashLine in ipairs(stashLines) do
+    local index = string.match(stashLine, "stash@{([0-9]+)}")
+    stashLineToIndex[stashLine] = index
+  end
+  return stashLineToIndex
+end
+
+local function getReflogLineToIndex()
+  local fugitive_command = "git reflog"
+  local reflogLines = vim.fn.systemlist(fugitive_command)
+
+  local reflogLineToIndex = {}
+  for _, reflogLine in ipairs(reflogLines) do
+    local index = string.match(reflogLine, "HEAD@{([0-9]+)}")
+    reflogLineToIndex[reflogLine] = index
+  end
+  return reflogLineToIndex
+end
+
+
+local function getCommitLineToIndex()
+  local fugitive_command = "git log --oneline"
+  local commitLines = vim.fn.systemlist(fugitive_command)
+
+  local commitLineToIndex = {}
+  for index, commitLine in ipairs(commitLines) do
+    commitLineToIndex[commitLine] = index - 1
+  end
+  return commitLineToIndex
+end
+
 return {
+  diffBranchCommits = diffBranchCommits,
+  getCommitLineToSha = getCommitLineToSha,
   getCurrentBranchName = getCurrentBranchName,
+  getCurrentRemoteBranchName = getCurrentRemoteBranchName,
+  getJiraTicket = getJiraTicket,
   getLastCommitMessage = getLastCommitMessage,
-  getJiraTicketFromBranchName = getJiraTicketFromBranchName,
+  getReflogLineToIndex = getReflogLineToIndex,
+  getRemoteBranchNames = getRemoteBranchNames,
+  getRepoBranchNames = getRepoBranchNames,
+  getStashLineToIndex = getStashLineToIndex,
+  getTags = getTags,
+  getCommitLineToIndex = getCommitLineToIndex
 }

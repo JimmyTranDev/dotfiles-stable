@@ -48,7 +48,7 @@ end
 
 local function renameFileWithInput(fileName, originDir, targetDir)
   local fileExtension = getFileExtension(fileName)
-  local rename = inputUtils.getInputFromUserRequired("Enter new file name: ")
+  local rename = inputUtils.getInputFromUser("Enter new file name: ")
   local newFileName = rename .. fileExtension
 
   local originFile = originDir .. "/" .. fileName

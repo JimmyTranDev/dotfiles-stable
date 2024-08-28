@@ -44,3 +44,8 @@ vim.api.nvim_create_autocmd("BufRead", {
     end
   end,
 })
+
+vim.cmd [[
+  hi WhichKeyGroup guifg=#f5e0dc
+  hi WhichKeyDesc guifg=#f5e0dc
+]]

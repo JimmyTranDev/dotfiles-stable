@@ -25,3 +25,6 @@ sudo usermod -a -G input $USER
 https://wiki.archlinux.org/title/Samba
 1.1 Installation
 1.3.3 Enable Usershares
+
+## Add copilot to the Github CLI
+gh extension install github/gh-copilot

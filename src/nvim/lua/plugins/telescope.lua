@@ -44,13 +44,13 @@ return {
     { mode = { "n", "v" }, "ge", vim.diagnostic.open_float, desc = "LSP Diagnostic" },
     { mode = { "n", "v" }, "gh", vim.lsp.buf.hover, desc = "LSP Hover" },
     { mode = { "n", "v" }, "gf", vim.lsp.buf.format, desc = "LSP Format" },
-    { mode = { "n", "v" }, "gu", function() require('telescope.builtin').lsp_references() end, desc = "LSP References" },
-    { mode = { "n", "v" }, "gs", function() require('telescope.builtin').lsp_document_symbols() end, desc = "LSP Document Symbols" },
-    { mode = { "n", "v" }, "gi", function() require('telescope.builtin').lsp_implementations() end, desc = "LSP Implementation" },
-    { mode = { "n", "v" }, "gw", function() require('telescope.builtin').lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
-    { mode = { "n", "v" }, "gW", function() require('telescope.builtin').lsp_dynamic_workspace_symbols() end, desc = "LSP Dynamic Workspace Symbols" },
-    { mode = { "n", "v" }, "gd", function() require('telescope.builtin').lsp_definitions() end, desc = "LSP Definition" },
-    { mode = { "n", "v" }, "gt", function() require('telescope.builtin').lsp_type_definitions() end, desc = "LSP Type Definition" },
+    -- { mode = { "n", "v" }, "gk", function() require('telescope.builtin').lsp_references() end, desc = "LSP References" },
+    -- { mode = { "n", "v" }, "gs", function() require('telescope.builtin').lsp_document_symbols() end, desc = "LSP Document Symbols" },
+    -- { mode = { "n", "v" }, "gi", function() require('telescope.builtin').lsp_implementations() end, desc = "LSP Implementation" },
+    -- { mode = { "n", "v" }, "gw", function() require('telescope.builtin').lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
+    -- { mode = { "n", "v" }, "gW", function() require('telescope.builtin').lsp_dynamic_workspace_symbols() end, desc = "LSP Dynamic Workspace Symbols" },
+    -- { mode = { "n", "v" }, "gd", function() require('telescope.builtin').lsp_definitions() end, desc = "LSP Definition" },
+    -- { mode = { "n", "v" }, "gt", function() require('telescope.builtin').lsp_type_definitions() end, desc = "LSP Type Definition" },
     { mode = { "n", "v" }, "gx", urlActions.openLink, desc = "OpenLink" },
 
     -- Special
@@ -60,7 +60,7 @@ return {
     -- { mode = "n", "<leader>fe", function() require('telescope.builtin').diagnostics() end, desc = "Diagnostics Files" },
 
     -- Grep
-    { mode = "n", "<leader>fm", telescopeActions.grepMarkDownHeadingsInCurrentFile, desc = "Grep Markdown Headings" },
+    { mode = "n", "<leader>fm", telescopeActions.grepFileMarkDownHeadings, desc = "Grep Markdown Headings" },
     { mode = "n", "<leader>fw", function() require('telescope.builtin').grep_string() end, desc = "Grep Word" },
     { mode = "n", "<leader>fW", function() require('telescope.builtin').grep_string({ search_dirs = { vim.fn.expand("%:p") } }) end, desc = "Grep Word File" },
     { mode = "v", "<leader>fg", telescopeActions.findSelectedText, desc = "Grep Selected Text" },
@@ -105,7 +105,7 @@ return {
     -- Git
     { mode = "n", "<leader>fjf", function() require('telescope.builtin').git_files() end, desc = "Files" },
     { mode = "n", "<leader>fjb", function() require('telescope.builtin').git_branches() end, desc = "Branches" },
-    { mode = "n", "<leader>fjB", telescopeActions.findGitConflicts, desc = "Conflicts" },
+    { mode = "n", "<leader>fjx", telescopeActions.findGitConlicts, desc = "Conflicts" },
     { mode = "n", "<leader>fjc", function() require('telescope.builtin').git_commits() end, desc = "Commits" },
     { mode = "n", "<leader>fjC", function() require('telescope.builtin').git_bcommits() end, desc = "Buffer Commits" },
     { mode = "v", "<leader>fjC", function() require('telescope.builtin').git_bcommits_range() end, desc = "Buffer Commits Range" },

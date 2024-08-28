@@ -1,8 +1,8 @@
 local gitUtils = require('custom.git.utils')
+local githubUtils = require('custom.github.utils')
+local githubConstants = require('custom.github.constants')
 local lookupUtils = require('custom.lookup.utils')
-local inputUtils = require('custom.input.utils')
 local constants = require('custom.lookup.constants')
-local fileUtils = require('custom.files.utils')
 
 local function openTechnicalLink(technicalLinkType)
   return function()
@@ -27,9 +27,20 @@ local function openTechnicalLink(technicalLinkType)
   end
 end
 
+local function openGithubUrlPrivate()
+  local githubUsername = githubConstants.username
+  local currentRepoName = githubUtils.getRepoName()
+  if currentRepoName == nil then
+    print("Git remote origin not found")
+    return
+  end
+  local currentRepoUrl = githubUtils.getRepoUrl(githubUsername, currentRepoName)
+  lookupUtils.openUrlInBrowser(currentRepoUrl)
+end
+
 local function openTechnicalLinkCurrent(technicalLinkType)
   return function()
-    local repoName = fileUtils.getCwdName()
+    local repoName = githubUtils.getRepoName()
     if repoName == nil then
       print("No repo found in current directory")
       return
@@ -37,6 +48,7 @@ local function openTechnicalLinkCurrent(technicalLinkType)
 
     local technicalLink = constants.repoNameToTechnicalLink[repoName]
     if technicalLink == nil then
+      openGithubUrlPrivate()
       print("No technical link found for repo: " .. repoName)
       return
     end
@@ -65,7 +77,7 @@ end
 
 local function openJiraTicket()
   local branchName = gitUtils.getCurrentBranchName()
-  local jiraTicket = gitUtils.getJiraTicketFromBranchName(branchName)
+  local jiraTicket = gitUtils.getJiraTicket(branchName)
   if jiraTicket == "" then
     print("No Jira ticket found in branch name")
     return
@@ -73,13 +85,6 @@ local function openJiraTicket()
 
   local jiraLink = lookupUtils.getJiraLinkWithTicket(jiraTicket)
   lookupUtils.openUrlInBrowser(jiraLink)
-end
-
-local function googleSearchSelected()
-  vim.cmd("normal! y")
-  local selectedText = vim.fn.getreg('"')
-  local url = lookupUtils.getGoogleSearchUrl(selectedText)
-  lookupUtils.openUrlInBrowser(url)
 end
 
 local function openNpmUrl()
@@ -90,18 +95,11 @@ local function openNpmUrl()
   lookupUtils.openUrlInBrowser(url)
 end
 
-local function googleSearch()
-  local inputText = inputUtils.getInputFromUserRequired("Google Search: ")
-  local url = lookupUtils.getGoogleSearchUrl(inputText)
-  lookupUtils.openUrlInBrowser(url)
-end
-
 return {
-  googleSearch = googleSearch,
-  googleSearchSelected = googleSearchSelected,
   openJiraTicket = openJiraTicket,
   openUsefulLink = openUsefulLink,
   openNpmUrl = openNpmUrl,
   openTechnicalLink = openTechnicalLink,
   openTechnicalLinkCurrent = openTechnicalLinkCurrent,
+  openGithubUrlPrivate = openGithubUrlPrivate,
 }

@@ -45,7 +45,7 @@ fi
 alias ai='~/Programming/dotfiles/etc/scripts/arch_install.sh'
 alias aa='~/Programming/dotfiles/etc/scripts/arch_aur.sh'
 alias al='~/Programming/dotfiles/etc/scripts/arch_link.sh'
-alias mu='~/Programming/dotfiles/etc/scripts/mac_install.sh'
+alias mi='~/Programming/dotfiles/etc/scripts/mac_install.sh'
 alias ml='~/Programming/dotfiles/etc/scripts/mac_link.sh'
 alias mr='yabai --restart-service & skhd --restart-service'
 alias azl='~/Programming/dotfiles/etc/scripts/azure_login.sh'

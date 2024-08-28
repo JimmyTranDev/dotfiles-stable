@@ -49,3 +49,6 @@ pnpm i -g @fsouza/prettierd
 ```bash
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ````
+
+## Add copilot to the Github CLI
+gh extension install github/gh-copilot

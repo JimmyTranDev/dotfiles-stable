@@ -78,4 +78,7 @@ vim.fn.sign_define("DiagnosticSignInfo",
 vim.fn.sign_define("DiagnosticSignHint",
   { text = "󰌵", texthl = "DiagnosticSignHint" })
 
-vim.g.undotree_SetFocusWhenToggle = 1
+-- Line
+vim.opt.cursorline = true
+vim.api.nvim_set_hl(0, 'LineNrAbove', { fg = '#5e67a1', bold = true })
+vim.api.nvim_set_hl(0, 'LineNrBelow', { fg = '#5e67a1', bold = true })

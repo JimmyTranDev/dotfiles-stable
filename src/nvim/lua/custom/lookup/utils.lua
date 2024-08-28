@@ -1,6 +1,6 @@
 local urlUtils = require('custom.url.utils')
 local fileUtils = require('custom.files.utils')
-local jiraUrl = require('hidden.jira').jiraUrl
+local jiraTicketUrl = require('hidden.constants').jiraTicketUrl
 
 local function openUrlInBrowser(url)
   fileUtils.open(url)
@@ -22,7 +22,7 @@ local getNpmUrl = function(query)
 end
 
 local function getJiraLinkWithTicket(ticket)
-  return jiraUrl .. ticket
+  return jiraTicketUrl .. ticket
 end
 
 return {

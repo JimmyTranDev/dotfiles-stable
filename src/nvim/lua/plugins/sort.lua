@@ -1,7 +1,8 @@
 return {
   'sQVe/sort.nvim',
   keys = {
-    { mode = "v", "<Leader>S", ":Sort<cr>", desc = "󰖽 Sort", silent = true },
+    { mode = "v", "<Leader>ss", ":Sort<cr>", desc = "󰖽 Sort", silent = true },
+    { mode = "v", "<Leader>si", ":Sort i<cr>", desc = "󰖽 Sort", silent = true },
   },
 
   -- Optional setup for overriding defaults.

@@ -1,46 +1,46 @@
 return {
   "folke/trouble.nvim",
   keys = {
-    -- {
-    --   "<leader>fe",
-    --   "<cmd>Trouble diagnostics win.type = split focus=true  win.position=top<cr>",
-    --   desc = "Diagnostics (Trouble)",
-    -- },
-    -- {
-    --   "gu",
-    --   "<cmd>Trouble lsp_references<cr>",
-    --   desc = "Diagnostics (Trouble)",
-    -- },
-    -- {
-    --   "gs",
-    --   "<cmd>Trouble lsp_document_symbols<cr>",
-    --   desc = "Diagnostics (Trouble)",
-    -- },
-    -- {
-    --   "gi",
-    --   "<cmd>Trouble lsp_implementations<cr>",
-    --   desc = "Diagnostics (Trouble)",
-    -- },
-    -- {
-    --   "gw",
-    --   "<cmd>Trouble lsp_workspace_symbols<cr>",
-    --   desc = "Diagnostics (Trouble)",
-    -- },
-    -- {
-    --   "gW",
-    --   "<cmd>Trouble lsp_dynamic_workspace_symbols<cr>",
-    --   desc = "Diagnostics (Trouble)",
-    -- },
-    -- {
-    --   "gd",
-    --   "<cmd>Trouble lsp_definitions<cr>",
-    --   desc = "Diagnostics (Trouble)",
-    -- },
-    -- {
-    --   "gt",
-    --   "<cmd>Trouble lsp_type_definitions<cr>",
-    --   desc = "Diagnostics (Trouble)",
-    -- },
+    {
+      "<leader>fe",
+      "<cmd>Trouble diagnostics win.type = split focus=true  win.position=top<cr>",
+      desc = "Diagnostics (Trouble)",
+    },
+    {
+      "gk",
+      "<cmd>Trouble lsp_references win.type = split focus=true  win.position=top<cr>",
+      desc = "Diagnostics (Trouble)",
+    },
+    {
+      "gs",
+      "<cmd>Trouble lsp_document_symbols win.type = split focus=true  win.position=top<cr>",
+      desc = "Diagnostics (Trouble)",
+    },
+    {
+      "gi",
+      "<cmd>Trouble lsp_implementations win.type = split focus=true  win.position=top<cr>",
+      desc = "Diagnostics (Trouble)",
+    },
+    {
+      "gw",
+      "<cmd>Trouble lsp_workspace_symbols win.type = split focus=true win.position=top<cr>",
+      desc = "Diagnostics (Trouble)",
+    },
+    {
+      "gW",
+      "<cmd>Trouble lsp_dynamic_workspace_symbols win.type = split focus=true  win.position=top<cr>",
+      desc = "Diagnostics (Trouble)",
+    },
+    {
+      "gd",
+      "<cmd>Trouble lsp_definitions win.type = split focus=true  win.position=top<cr>",
+      desc = "Diagnostics (Trouble)",
+    },
+    {
+      "gt",
+      "<cmd>Trouble lsp_type_definitions win.type = split focus=true  win.position=top<cr>",
+      desc = "Diagnostics (Trouble)",
+    },
   },
   opts = {
     auto_preview = false,

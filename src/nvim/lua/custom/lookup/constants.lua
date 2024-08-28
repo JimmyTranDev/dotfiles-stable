@@ -12,8 +12,8 @@ local technicalLinkField = {
   DESIGN = "design",
 }
 
-local repoNameToTechnicalLink = require('hidden.technical-links')
-local usefulLink = require('hidden.useful-links')
+local repoNameToTechnicalLink = require('hidden.constants').repoNameToTechnicalLink
+local usefulLink = require('hidden.constants').usefulLink
 
 local githubRepoNames = {}
 for repoName, _ in pairs(repoNameToTechnicalLink) do

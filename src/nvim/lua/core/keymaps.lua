@@ -5,10 +5,11 @@ local fileActions = require("custom.files.actions")
 local lookupActions = require("custom.lookup.actions")
 local loggingActions = require("custom.logging.actions")
 
-local TechnicalLinkType = require("custom.lookup.constants").technicalLinkField
 local openTechnicalLink = lookupActions.openTechnicalLink
 local openTechnicalLinkCurrent = lookupActions.openTechnicalLinkCurrent
+local actionToTechnicalLinkType = constants.actionToTechnicalLinkType
 
+-- Save and restore marks
 local alphabet = "abcdefghijklmnopqrstuvwxyz"
 for i = 1, #alphabet do
   local letter = alphabet:sub(i, i)
@@ -29,20 +30,7 @@ keymap.set('n', '<Leader>;t', loggingActions.logWithInput("md_tasks", "[misc] ",
 keymap.set('n', '<Leader>;n', loggingActions.logWithInput("md_notes", "", "󰎚 Note"),
   { desc = "󰎚 Log Note", silent = true })
 
-local actionToTechnicalLinkType = {
-  ["󰊤 Github"] = { type = TechnicalLinkType.REPO, map = "g" },
-  [" Test Logs"] = { type = TechnicalLinkType.TEST_LOGS, map = "l" },
-  [" Prod Logs"] = { type = TechnicalLinkType.PROD_LOGS, map = "L" },
-  [" Test Pods"] = { type = TechnicalLinkType.TEST_PODS, map = "p" },
-  [" Prod Pods"] = { type = TechnicalLinkType.PROD_PODS, map = "P" },
-  ["  Container Registry"] = { type = TechnicalLinkType.CONTAINER_REGISTRY, map = "c" },
-  ["󰒋 Local Server"] = { type = TechnicalLinkType.LOCAL_SERVER, map = "sl" },
-  ["󰒋 Test Server"] = { type = TechnicalLinkType.TEST_SERVER, map = "st" },
-  ["󰒋 Prod Server"] = { type = TechnicalLinkType.PROD_SERVER, map = "sp" },
-  [" Design"] = { type = TechnicalLinkType.DESIGN, map = "d" },
-  [" Diff"] = { type = TechnicalLinkType.DIFF, map = "D" },
-}
-
+-- Link lookup
 for action, data in pairs(actionToTechnicalLinkType) do
   keymap.set('n', '<Leader>l' .. data.map, openTechnicalLink(data.type), { desc = action, silent = true })
 end
@@ -52,12 +40,10 @@ for action, data in pairs(actionToTechnicalLinkType) do
 end
 
 -- Lookups
-keymap.set('n', '<Leader>uu', lookupActions.openUsefulLink, { desc = " Useful Link", silent = true })
 keymap.set('n', '<Leader>uf', fileActions.openDir, { desc = " Open File", silent = true })
+keymap.set('n', '<Leader>uu', lookupActions.openUsefulLink, { desc = " Useful Link", silent = true })
 keymap.set('n', '<Leader>uo', fileActions.moveFileToAsset("/Downloads"), { desc = " Move To Assets (Downloads)" })
 keymap.set('n', '<Leader>ud', fileActions.moveFileToAsset("/Desktop"), { desc = " Move To Assets (Desktop)" })
-keymap.set('n', '<Leader>ug', lookupActions.googleSearch, { desc = " Search", silent = true })
-keymap.set('v', '<Leader>ug', lookupActions.googleSearchSelected, { desc = " Search Selected", silent = true })
 keymap.set('n', '<Leader>uj', lookupActions.openJiraTicket, { desc = "󰌃 Jira Ticket", silent = true })
 keymap.set('n', '<Leader>un', lookupActions.openNpmUrl, { desc = " NPM Link", silent = true })
 
@@ -74,8 +60,8 @@ keymap.set("n", "gP", ":split<CR>", { desc = "Hsplit", silent = true })
 keymap.set("n", "gp", ":vsplit<CR>", { desc = "Vsplit", silent = true })
 
 -- Quickfix
-keymap.set("n", "gj", ":cnext<CR>", { desc = "Cnext", silent = true, noremap = true })
-keymap.set("n", "gk", ":cprev<CR>", { desc = "Cprev", silent = true, noremap = true })
+keymap.set("n", "]q", ":cnext<CR>", { desc = "Cnext", silent = true, noremap = true })
+keymap.set("n", "[q", ":cprev<CR>", { desc = "Cprev", silent = true, noremap = true })
 keymap.set("n", ";c", ":cdo s///gc<left><left><left><left>", { desc = "CDO", silent = true })
 
 -- Buffer

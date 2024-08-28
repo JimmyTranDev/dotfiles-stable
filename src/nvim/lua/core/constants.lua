@@ -1,8 +1,12 @@
+local TechnicalLinkType = require("custom.lookup.constants").technicalLinkField
+
+-- Location Vartiables
 local expand = vim.fn.expand
 local HOME = expand('$HOME')
 local NEOVIM_STATE_DIR = expand('$HOME/.local/state/nvim/')
 local PROGRAMMING_DIR = expand('$HOME/Programming')
 
+-- Catpuccin color scheme
 local colors = {
   rosewater = '#f5e0dc',
   flamingo = '#f2cdcd',
@@ -32,9 +36,24 @@ local colors = {
   crust = '#11111b'
 }
 
+local actionToTechnicalLinkType = {
+  ["󰊤 Github"] = { type = TechnicalLinkType.REPO, map = "g" },
+  [" Test Logs"] = { type = TechnicalLinkType.TEST_LOGS, map = "l" },
+  [" Prod Logs"] = { type = TechnicalLinkType.PROD_LOGS, map = "L" },
+  [" Test Pods"] = { type = TechnicalLinkType.TEST_PODS, map = "p" },
+  [" Prod Pods"] = { type = TechnicalLinkType.PROD_PODS, map = "P" },
+  ["  Container Registry"] = { type = TechnicalLinkType.CONTAINER_REGISTRY, map = "c" },
+  ["󰒋 Local Server"] = { type = TechnicalLinkType.LOCAL_SERVER, map = "sl" },
+  ["󰒋 Test Server"] = { type = TechnicalLinkType.TEST_SERVER, map = "st" },
+  ["󰒋 Prod Server"] = { type = TechnicalLinkType.PROD_SERVER, map = "sp" },
+  [" Design"] = { type = TechnicalLinkType.DESIGN, map = "d" },
+  [" Diff"] = { type = TechnicalLinkType.DIFF, map = "D" },
+}
+
 return {
   HOME = HOME,
   NEOVIM_STATE_DIR = NEOVIM_STATE_DIR,
   PROGRAMMING_DIR = PROGRAMMING_DIR,
-  colors = colors
+  colors = colors,
+  actionToTechnicalLinkType = actionToTechnicalLinkType
 }

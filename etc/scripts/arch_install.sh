@@ -30,6 +30,7 @@ packages=(
   "ntfs-3g"
   "tree"
   "avahi"
+  "github-cli"
   # "bluez"
   # "bluez-utils"
 
@@ -62,9 +63,7 @@ packages=(
   "imagemagick"
 
   # Fonts
-  "ttf-firacode-nerd"
-  "ttf-noto-nerd"
-  "ttf-iosevka-nerd"
+  "nerd-fonts"
   "noto-fonts-cjk"
   "noto-fonts-emoji"
   "noto-fonts-extra"

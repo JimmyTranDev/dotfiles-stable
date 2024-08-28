@@ -16,6 +16,7 @@ brew install starship
 brew install fnm
 brew install tmux
 brew install zellij
+brew install gh
 
 # Yazi
 brew install fzf
@@ -32,6 +33,7 @@ brew install imagemagick
 brew install --cask dbeaver-community
 brew install --cask firefox
 brew install --cask font-fira-code-nerd-font
+brew install --cask font-iosevka-nerd-font
 brew install --cask google-cloud-sdk
 brew install --cask kitty
 brew install --cask postman
