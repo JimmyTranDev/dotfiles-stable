@@ -52,3 +52,8 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 ## Add copilot to the Github CLI
 gh extension install github/gh-copilot
+
+## Yazi
+ya pack -a dedukun/relative-motions
+ya pack -a yazi-rs/plugins:jump-to-char
+ya pack -a dedukun/bookmarks

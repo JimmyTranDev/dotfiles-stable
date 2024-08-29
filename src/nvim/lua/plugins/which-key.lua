@@ -88,7 +88,7 @@ return {
       { "<leader>gr", desc = " Reset" },
       { "<leader>gt", desc = "󰜉 Restore" },
       { "<leader>gw", desc = " Worktree" },
-      { "<leader>gx", desc = "󰂹 Bisect" },
+      { "<leader>gj", desc = "󰂹 Bisect" },
 
       { "<leader>ls", desc = "󰒋 Server" },
       { "<leader>t;", desc = " Misc" },

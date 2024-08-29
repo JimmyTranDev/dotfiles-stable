@@ -39,4 +39,3 @@ brew install --cask kitty
 brew install --cask postman
 brew install --cask slack
 brew install --cask thunderbird
-brew install --cask alacritty

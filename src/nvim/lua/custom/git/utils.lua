@@ -46,6 +46,13 @@ local function getTags()
   return tags
 end
 
+-- NOTE: does not work
+local function getTagsRemote()
+  local fugitive_command = "git ls-remote --tags"
+  local tags = vim.fn.systemlist(fugitive_command)
+  return tags
+end
+
 local function getRemoteBranchNames()
   local branchNames = {}
   for _, branchName in ipairs(vim.fn.systemlist("git branch -r")) do
@@ -113,6 +120,7 @@ end
 
 return {
   diffBranchCommits = diffBranchCommits,
+  getCommitLineTables = getCommitLineTables,
   getCommitLineToSha = getCommitLineToSha,
   getCurrentBranchName = getCurrentBranchName,
   getCurrentRemoteBranchName = getCurrentRemoteBranchName,
@@ -123,5 +131,5 @@ return {
   getRepoBranchNames = getRepoBranchNames,
   getStashLineToIndex = getStashLineToIndex,
   getTags = getTags,
-  getCommitLineTables = getCommitLineTables,
+  getRemoteTags = getTagsRemote,
 }
