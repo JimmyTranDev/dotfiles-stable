@@ -8,6 +8,7 @@ aur_packages=(
   "waybar-module-pacman-updates-git"
   "fnm"
   "python-detect-secrets"
+  "hyprshot"
 )
 
 for i in "${aur_packages[@]}"; do

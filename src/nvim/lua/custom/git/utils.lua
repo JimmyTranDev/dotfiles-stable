@@ -39,23 +39,6 @@ local function getRepoBranchNames()
   return branchNames;
 end
 
-local function getCommitLineToSha(isAll)
-  local fugitive_command
-  if isAll then
-    fugitive_command = "git log --oneline --all"
-  else
-    fugitive_command = "git log --oneline"
-  end
-
-  local commitLines = vim.fn.systemlist(fugitive_command)
-
-  local commitLineToSha = {}
-  for _, commitLine in ipairs(commitLines) do
-    local sha = string.sub(commitLine, 1, 7)
-    commitLineToSha[commitLine] = sha
-  end
-  return commitLineToSha
-end
 
 local function getTags()
   local fugitive_command = "git tag -l"
@@ -73,6 +56,24 @@ local function getRemoteBranchNames()
   return branchNames;
 end
 
+local function getCommitLineToSha(isAll)
+  local fugitive_command
+  if isAll then
+    fugitive_command = "git log --oneline --all"
+  else
+    fugitive_command = "git log --oneline"
+  end
+
+  local commitLines = vim.fn.systemlist(fugitive_command)
+
+  local commitLineToSha = {}
+  for _, commitLine in ipairs(commitLines) do
+    local sha = string.sub(commitLine, 1, 7)
+    commitLineToSha[commitLine] = sha
+  end
+  return commitLines, commitLineToSha
+end
+
 local function getStashLineToIndex()
   local fugitive_command = "git stash list"
   local stashLines = vim.fn.systemlist(fugitive_command)
@@ -82,7 +83,7 @@ local function getStashLineToIndex()
     local index = string.match(stashLine, "stash@{([0-9]+)}")
     stashLineToIndex[stashLine] = index
   end
-  return stashLineToIndex
+  return stashLines, stashLineToIndex
 end
 
 local function getReflogLineToIndex()
@@ -94,19 +95,20 @@ local function getReflogLineToIndex()
     local index = string.match(reflogLine, "HEAD@{([0-9]+)}")
     reflogLineToIndex[reflogLine] = index
   end
-  return reflogLineToIndex
+  return reflogLines, reflogLineToIndex
 end
 
-
-local function getCommitLineToIndex()
+local function getCommitLineTables()
   local fugitive_command = "git log --oneline"
   local commitLines = vim.fn.systemlist(fugitive_command)
 
   local commitLineToIndex = {}
+
   for index, commitLine in ipairs(commitLines) do
     commitLineToIndex[commitLine] = index - 1
   end
-  return commitLineToIndex
+
+  return commitLines, commitLineToIndex
 end
 
 return {
@@ -121,5 +123,5 @@ return {
   getRepoBranchNames = getRepoBranchNames,
   getStashLineToIndex = getStashLineToIndex,
   getTags = getTags,
-  getCommitLineToIndex = getCommitLineToIndex
+  getCommitLineTables = getCommitLineTables,
 }

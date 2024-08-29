@@ -36,6 +36,7 @@ return {
     { mode = "n", "<Leader>gBi", gitActions.rebaseInteractive, desc = "Rebase interactive" },
 
     -- DIFF
+    { mode = "n", "<Leader>ges", ":Git diff --staged<CR>", desc = "Diff staged", silent = true },
     { mode = "n", "<Leader>geb", gitActions.diffBranch, desc = "Diff Branch", silent = true },
     { mode = "n", "<Leader>geo", gitActions.diffOrigin, desc = "Diff Origin", silent = true },
     { mode = "n", "<Leader>geh", gitActions.diffHash, desc = "Diff Hash", silent = true },
@@ -62,6 +63,8 @@ return {
     { mode = "n", "<Leader>grO", gitActions.resetHardOrigin, desc = "Reset origin", silent = true },
     { mode = "n", "<Leader>grB", gitActions.restHardBranch, desc = "Reset branch", silent = true },
     { mode = "n", "<Leader>grt", ":Git restore -p<CR>", desc = "Restore patch" },
+    { mode = "n", "<Leader>grT", ":Git restore .<CR>", desc = "Restore all" },
+    { mode = "n", "<Leader>grD", ":Git restore", desc = "Restore glob" },
 
     -- BRANCH
     { mode = "n", "<Leader>gbD", gitActions.deleteBranch, desc = "Branch delete" },
@@ -72,6 +75,7 @@ return {
     { mode = "n", "<Leader>gbP", ":Git pull --rebase<CR>", desc = "Branch pull rebase", silent = true },
     { mode = "n", "<Leader>gbp", ":Git pull<CR>", desc = "Branch pull", silent = true },
     { mode = "n", "<Leader>gbO", gitActions.deleteOriginBranch, desc = "Branch delete remote" },
+    { mode = "n", "<Leader>gbo", ":Git remote add origin", desc = "Branch delete remote" },
     { mode = "n", "<Leader>gbs", gitActions.syncBranchWithRemote, desc = "Branch Synch" },
 
     -- STASH

@@ -62,6 +62,7 @@ return {
     { mode = "n", "<leader>thf", ':2TermExec cmd="pnpm run fms:types"<CR>', desc = "Pnpm Fms", silent = true },
     { mode = "n", "<leader>the", ':2TermExec cmd="pnpm run test:e2e"<CR>', desc = "Pnpm e2e", silent = true },
     { mode = "n", "<leader>thp", ':2TermExec cmd="pnpm run preview"<CR>', desc = "Pnpm Preview", silent = true },
+    { mode = "n", "<leader>thw", ':2TermExec cmd="pnpm run watch"<CR>', desc = "Pnpm Watch", silent = true },
 
     -- Make
     { mode = "n", "<leader>tms", ':1TermExec cmd="make start"<CR>', desc = "Make Run", silent = true },

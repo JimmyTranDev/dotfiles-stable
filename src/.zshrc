@@ -54,6 +54,16 @@ alias fl='nix develop ~/Programming/dotfiles/etc/nixos/shells/flutter --command 
 alias ll="ls -la"
 alias nvm="fnm"
 alias :q="exit"
+alias s="sudo"
+alias c="clear"
+alias e="exit"
+alias n="nvim"
+alias y="yazi"
+alias gD="cd ~/Programming/bank-documentation;nvim"
+alias gd="cd ~/Programming/dotfiles;nvim"
+alias gn="cd ~/Programming/notes.md;nvim"
+alias gw="cd ~/Programming/work-logs.md;nvim"
+alias gp="cd ~/Programming"
 
 ##########################################################
 # function yazi_media() {
@@ -83,6 +93,8 @@ function open_yazi() {
 }
 zle -N open_yazi
 bindkey '^y' open_yazi
+
+
 ##########################################################
 
 if [ ! -d "/etc/nixos" ]; then

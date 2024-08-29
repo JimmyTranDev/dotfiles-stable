@@ -25,9 +25,9 @@ keymap.set('n', '<Leader>;S', ':!rm -r ' .. constants.NEOVIM_STATE_DIR .. '<CR>'
 keymap.set('n', '<Leader>;c', function() vim.cmd("set spell!") end, { desc = " Toggle Spell Checker", silent = true })
 keymap.set('n', '<Leader>;q', ':rightbelow copen<CR>', { desc = "󰁨 Toggle Quickfix", silent = true })
 keymap.set('n', '<Leader>;Q', ':cclose<CR>', { desc = "󰁨 Close Quickfix", silent = true })
-keymap.set('n', '<Leader>;t', loggingActions.logWithInput("md_tasks", "[misc] ", " Task"),
+keymap.set('n', '<Leader>;t', loggingActions.logWithInput("[misc] ", " Task"),
   { desc = " Log Task", silent = true })
-keymap.set('n', '<Leader>;n', loggingActions.logWithInput("md_notes", "", "󰎚 Note"),
+keymap.set('n', '<Leader>;n', loggingActions.logWithInput("", "󰎚 Note"),
   { desc = "󰎚 Log Note", silent = true })
 
 -- Link lookup
@@ -60,8 +60,8 @@ keymap.set("n", "gP", ":split<CR>", { desc = "Hsplit", silent = true })
 keymap.set("n", "gp", ":vsplit<CR>", { desc = "Vsplit", silent = true })
 
 -- Quickfix
-keymap.set("n", "]q", ":cnext<CR>", { desc = "Cnext", silent = true, noremap = true })
-keymap.set("n", "[q", ":cprev<CR>", { desc = "Cprev", silent = true, noremap = true })
+keymap.set("n", "gj", ":cnext<CR>", { desc = "Cnext", silent = true, noremap = true })
+keymap.set("n", "gk", ":cprev<CR>", { desc = "Cprev", silent = true, noremap = true })
 keymap.set("n", ";c", ":cdo s///gc<left><left><left><left>", { desc = "CDO", silent = true })
 
 -- Buffer

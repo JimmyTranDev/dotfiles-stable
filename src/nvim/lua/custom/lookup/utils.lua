@@ -1,6 +1,13 @@
 local urlUtils = require('custom.url.utils')
 local fileUtils = require('custom.files.utils')
-local jiraTicketUrl = require('hidden.constants').jiraTicketUrl
+local hiddenConstants = require('hidden.constants')
+local jiraTicketUrl
+
+if hiddenConstants ~= nil then
+  jiraTicketUrl = hiddenConstants.jiraTicketUrl
+else
+  jiraTicketUrl = "https://jira.com/browse/"
+end
 
 local function openUrlInBrowser(url)
   fileUtils.open(url)

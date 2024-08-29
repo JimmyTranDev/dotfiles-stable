@@ -87,7 +87,7 @@ local function createCommit(prefix, emoji)
 
     if (projectName ~= 'notes') then
       local taskMessage = string.format("[%s] %s", projectName, commitMessage)
-      loggingUtils.log("md_tasks", taskMessage)
+      loggingUtils.log(taskMessage)
 
       vim.cmd('silent "git -C ~/Programming/notes/ pull --rebase"')
       local newNoteCommitMessage = string.format("feat: ✨ %s", 'Week ' .. os.date("%V"))
@@ -205,8 +205,7 @@ end
 
 local function addTagToHash()
   local tagName = inputUtils.getInputFromUser("Tag Name: ")
-  local commitLineToSha = gitUtils.getCommitLineToSha(false)
-  local commitLines = vim.fn.keys(commitLineToSha)
+  local commitLines, commitLineToSha = gitUtils.getCommitLineToSha(false)
 
   vim.ui.select(commitLines, {
     prompt = "Select commit to tag:",
@@ -247,8 +246,7 @@ local function pushTag()
 end
 
 local function revertToCommit()
-  local commitLineToSha = gitUtils.getCommitLineToSha()
-  local commitLines = vim.fn.keys(commitLineToSha)
+  local commitLines, commitLineToSha = gitUtils.getCommitLineToSha(false)
 
   vim.ui.select(commitLines, {
     prompt = "Select commit to revert:",
@@ -276,8 +274,7 @@ local function deleteOriginBranch()
 end
 
 local function cherryPickCommit()
-  local commitLineToSha = gitUtils.getCommitLineToSha(true)
-  local commitLines = vim.fn.keys(commitLineToSha)
+  local commitLines, commitLineToSha = gitUtils.getCommitLineToSha(true)
 
   vim.ui.select(commitLines, {
     prompt = "Select commit to cherry-pick:",
@@ -336,8 +333,8 @@ local function rebaseBranch()
 end
 
 local function bisectGoodInital()
-  local commitLineToSha = gitUtils.getCommitLineToSha()
-  local commitLines = vim.fn.keys(commitLineToSha)
+  local commitLines, commitLineToSha = gitUtils.getCommitLineToSha()
+
   vim.ui.select(commitLines, {
     prompt = "Select good commit:",
   }, function(commitLine)
@@ -351,8 +348,7 @@ local function bisectGoodInital()
 end
 
 local function dropStash()
-  local stashLineToIndex = gitUtils.getStashLineToIndex()
-  local stashLines = vim.fn.keys(stashLineToIndex)
+  local stashLines, stashLineToIndex = gitUtils.getStashLineToIndex()
 
   vim.ui.select(stashLines, {
     prompt = "Select stash to drop:",
@@ -402,8 +398,7 @@ local function deleteBranch()
 end
 
 local function resetToReflogIndex()
-  local reflogLineToIndex = gitUtils.getReflogLineToIndex()
-  local reflogLines = vim.fn.keys(reflogLineToIndex)
+  local reflogLines, reflogLineToIndex = gitUtils.getReflogLineToIndex()
 
   vim.ui.select(reflogLines, {
     prompt = "Select reflog to reset to:",
@@ -418,8 +413,7 @@ local function resetToReflogIndex()
 end
 
 local function rebaseInteractive()
-  local commitLinetoIndex = gitUtils.getCommitLineToIndex()
-  local commitLines = vim.fn.keys(commitLinetoIndex)
+  local commitLines, commitLineToIndex = gitUtils.getCommitLineTables()
 
   vim.ui.select(commitLines, {
     prompt = "Select commit to rebase:",
@@ -428,7 +422,8 @@ local function rebaseInteractive()
       return
     end
 
-    local index = commitLinetoIndex[commitLine]
+    -- index find
+    local index = commitLineToIndex[commitLine]
     vim.cmd("Git rebase -i HEAD~" .. index)
   end)
 end
@@ -451,8 +446,8 @@ local function syncBranchWithRemote()
       return
     end
 
-    vim.cmd("Git fetch origin " .. branchName)
-    vim.cmd("Git pull origin " .. branchName)
+    vim.cmd("Git fetch origin " .. branchName .. ":" .. branchName)
+    vim.cmd("Git pull -r origin " .. branchName .. ":" .. branchName)
   end)
 end
 
