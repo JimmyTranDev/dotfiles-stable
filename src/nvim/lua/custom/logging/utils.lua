@@ -1,18 +1,22 @@
 local constants = require("core.constants")
 
-local function log(dirName, message)
-  message = message .. '  '
-  local currentWeek = os.date("%V")
-  local currentYear = os.date("%Y")
-  local shortDate = os.date("%d.%m.%Y")
-  local dayName = os.date("%A")
+local function log(message)
+  message          = message .. '  '
+  local logDirName = "work-logs.md"
+  if string.find(message, logDirName) then
+    return
+  end
 
-  local title = string.format("# Week %s, %s", currentWeek, currentYear)
-  local dayTitle = string.format("## %s (%s)", dayName, shortDate)
+  local currentWeek     = os.date("%V")
+  local currentYear     = os.date("%Y")
+  local shortDate       = os.date("%d.%m.%Y")
+  local dayName         = os.date("%A")
 
+  local title           = string.format("# Week %s, %s", currentWeek, currentYear)
+  local dayTitle        = string.format("## %s (%s)", dayName, shortDate)
 
-  local logFile = string.format("%s-%s.md", currentWeek, currentYear)
-  local logFileFullPath = string.format("%s/notes/%s/%s", constants.PROGRAMMING_DIR, dirName, logFile)
+  local logFile         = string.format("%s-%s.md", currentWeek, currentYear)
+  local logFileFullPath = string.format("%s/%s/%s", constants.PROGRAMMING_DIR, logDirName, logFile)
   if vim.fn.filereadable(logFileFullPath) == 0 then
     vim.fn.writefile({ title, '', dayTitle, message }, logFileFullPath)
     return;
