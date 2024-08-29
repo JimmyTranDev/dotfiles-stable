@@ -6,8 +6,7 @@ configsDirs=(
   "btop"
   "nushell"
   "starship.toml"
-  "alacritty"
-  "zellij"
+  "yazi"
 )
 
 for dir in ${configsDirs[@]}; do

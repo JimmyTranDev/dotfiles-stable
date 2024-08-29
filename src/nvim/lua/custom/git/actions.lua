@@ -35,20 +35,6 @@ local function renameCurrentBranch()
   end
 end
 
-local function gitDiffWithDevelop()
-  -- Get the name of the current branch
-  local current_branch = vim.fn.systemlist("git rev-parse --abbrev-ref HEAD")[1]
-
-  -- Set the target branch as 'develop'
-  local target_branch = "develop"
-
-  -- Construct the Fugitive command to show the diff between branches
-  local fugitive_command = string.format(":Git --abbrev-commit log %s..%s", target_branch, current_branch)
-
-  -- Execute the Fugitive command
-  vim.cmd(fugitive_command)
-end
-
 local function createBranch(prefix)
   return function()
     local branchDescription = inputUtils.getInputFromUser("Branch Description: ")
@@ -161,7 +147,7 @@ local function logBranch()
   end)
 end
 
-local function logOrigin()
+local function logDiffWithRemote()
   local currentBranch = gitUtils.getCurrentBranchName()
   local remoteBranch = gitUtils.getCurrentRemoteBranchName()
   gitUtils.diffBranchCommits(remoteBranch, currentBranch)
@@ -175,13 +161,13 @@ local function diffHash()
   vim.cmd("Git diff " .. hash)
 end
 
-local function diffOrigin()
+local function diffRemote()
   local currentBranch = gitUtils.getCurrentBranchName()
   local remoteBranch = gitUtils.getCurrentRemoteBranchName()
   gitUtils.diffBranchCommits(currentBranch, remoteBranch)
 end
 
-local function logHash()
+local function logDiffWithHash()
   local hash = inputUtils.getInputFromUser("Hash: ")
   if hash == "" then
     return
@@ -190,7 +176,7 @@ local function logHash()
 end
 
 
-local function resetHardOrigin()
+local function resetBranchHardWithOrigin()
   local originBranch = gitUtils.getCurrentRemoteBranchName()
   vim.cmd("Git reset --hard " .. originBranch)
 end
@@ -219,7 +205,20 @@ local function addTagToHash()
   end)
 end
 
-local function deleteTag()
+local function deleteRemoteTag()
+  local tags = gitUtils.getTags()
+  vim.ui.select(tags, {
+    prompt = "Select tag to delete:",
+  }, function(tag)
+    if tag == nil then
+      return
+    end
+
+    vim.cmd("Git push origin --delete " .. tag)
+  end)
+end
+
+local function deleteLocalTag()
   local tags = gitUtils.getTags()
   vim.ui.select(tags, {
     prompt = "Select tag to delete:",
@@ -245,7 +244,7 @@ local function pushTag()
   end)
 end
 
-local function revertToCommit()
+local function revertBranchToCommit()
   local commitLines, commitLineToSha = gitUtils.getCommitLineToSha(false)
 
   vim.ui.select(commitLines, {
@@ -260,7 +259,7 @@ local function revertToCommit()
   end)
 end
 
-local function deleteOriginBranch()
+local function deleteRemoteBranch()
   local remoteBranchNames = gitUtils.getRemoteBranchNames()
   vim.ui.select(remoteBranchNames, {
     prompt = "Select branch to delete:",
@@ -310,7 +309,7 @@ local function mergeBranch()
   end)
 end
 
-local function rebaseBranch()
+local function rebaseWithBranch()
   local branchNames = gitUtils.getRepoBranchNames()
   local currentBranch = gitUtils.getCurrentBranchName()
 
@@ -370,7 +369,7 @@ local function createStash()
   vim.cmd("Git stash save " .. stashMessage)
 end
 
-local function deleteBranch()
+local function deleteLocalBranch()
   local branchNames = gitUtils.getRepoBranchNames()
   local currentBranch = gitUtils.getCurrentBranchName()
 
@@ -412,7 +411,7 @@ local function resetToReflogIndex()
   end)
 end
 
-local function rebaseInteractive()
+local function rebaseBranchInteractive()
   local commitLines, commitLineToIndex = gitUtils.getCommitLineTables()
 
   vim.ui.select(commitLines, {
@@ -451,7 +450,7 @@ local function syncBranchWithRemote()
   end)
 end
 
-local function restHardBranch()
+local function restHardWithBranch()
   local branchNames = gitUtils.getRepoBranchNames()
   local currentBranch = gitUtils.getCurrentBranchName()
 
@@ -483,26 +482,26 @@ return {
   createCommit = createCommit,
   createStash = createStash,
   createWorktree = createWorktree,
-  deleteBranch = deleteBranch,
-  deleteOriginBranch = deleteOriginBranch,
-  deleteTag = deleteTag,
+  deleteLocalBranch = deleteLocalBranch,
+  deleteRemoteBranch = deleteRemoteBranch,
+  deleteRemoteTag = deleteRemoteTag,
+  deleteLocalTag = deleteLocalTag,
   diffBranch = diffBranch,
   diffHash = diffHash,
-  diffOrigin = diffOrigin,
+  diffRemote = diffRemote,
   dropStash = dropStash,
-  gitDiffWithDevelop = gitDiffWithDevelop,
   logBranch = logBranch,
-  logHash = logHash,
-  logOrigin = logOrigin,
+  logDiffWithHash = logDiffWithHash,
+  logDiffWithRemote = logDiffWithRemote,
   mergeBranch = mergeBranch,
   pushTag = pushTag,
-  rebaseBranch = rebaseBranch,
-  rebaseInteractive = rebaseInteractive,
+  rebaseWithBranch = rebaseWithBranch,
+  rebaseBranchInteractive = rebaseBranchInteractive,
   renameCurrentBranch = renameCurrentBranch,
-  resetHardOrigin = resetHardOrigin,
+  resetBranchHardWithOrigin = resetBranchHardWithOrigin,
   resetToReflogIndex = resetToReflogIndex,
-  restHardBranch = restHardBranch,
-  revertToCommit = revertToCommit,
+  resetHardWithBranch = restHardWithBranch,
+  revertBranchToCommit = revertBranchToCommit,
   searchCommitMessagesCommits = searchCommitMessagesCommits,
   searchCommitMessagesDiffs = searchCommitMessagesDiffs,
   syncBranchWithRemote = syncBranchWithRemote,

@@ -24,7 +24,7 @@ return {
     { mode = "n", "<Leader>gT", gitActions.changeLastCommitMessage, desc = " Change last commit message" },
     { mode = "n", "<Leader>gV", ":Git add .<CR>", desc = " Add all", silent = true },
     { mode = "n", "<Leader>gY", ":Git add . <Bar> :Git commit --amend --no-edit <Bar> :Git push --force<CR>", desc = " Amend and push", silent = true },
-    { mode = "n", "<Leader>gU", gitActions.revertToCommit, desc = "󰝳 Revert commit", silent = true },
+    { mode = "n", "<Leader>gU", gitActions.revertBranchToCommit, desc = "󰝳 Revert commit", silent = true },
 
     -- REFLOG
     { mode = "n", "<Leader>gRr", gitActions.resetToReflogIndex, desc = "Reflog Reset" },
@@ -33,25 +33,26 @@ return {
     -- REBASE
     { mode = "n", "<Leader>gBa", ":Git rebase --abort<CR>", desc = "Rebase abort", silent = true },
     { mode = "n", "<Leader>gBc", ":Git rebase --continue<CR>", desc = "Rebase continue", silent = true },
-    { mode = "n", "<Leader>gBi", gitActions.rebaseInteractive, desc = "Rebase interactive" },
+    { mode = "n", "<Leader>gBi", gitActions.rebaseBranchInteractive, desc = "Rebase interactive" },
 
     -- DIFF
     { mode = "n", "<Leader>ges", ":Git diff --staged<CR>", desc = "Diff staged", silent = true },
     { mode = "n", "<Leader>geb", gitActions.diffBranch, desc = "Diff Branch", silent = true },
-    { mode = "n", "<Leader>geo", gitActions.diffOrigin, desc = "Diff Origin", silent = true },
+    { mode = "n", "<Leader>geo", gitActions.diffRemote, desc = "Diff Origin", silent = true },
     { mode = "n", "<Leader>geh", gitActions.diffHash, desc = "Diff Hash", silent = true },
 
     -- LOG
     { mode = "n", "<Leader>gab", gitActions.logBranch, desc = "Log Branch", silent = true },
-    { mode = "n", "<Leader>gao", gitActions.logOrigin, desc = "Log Origin", silent = true },
-    { mode = "n", "<Leader>gah", gitActions.logHash, desc = "Log Hash", silent = true },
+    { mode = "n", "<Leader>gao", gitActions.logDiffWithRemote, desc = "Log Origin", silent = true },
+    { mode = "n", "<Leader>gah", gitActions.logDiffWithHash, desc = "Log Hash", silent = true },
 
     -- TAGS
     { mode = "n", "<Leader>gtt", gitActions.addTag, desc = "Tag add" },
     { mode = "n", "<Leader>gth", gitActions.addTagToHash, desc = "Tag add to hash" },
     { mode = "n", "<Leader>gtl", ":Git tag -l<CR>", desc = "Tag list", silent = true },
     { mode = "n", "<Leader>gtp", gitActions.pushTag, desc = "Tag push", silent = true },
-    { mode = "n", "<Leader>gtd", gitActions.deleteTag, desc = "Tag delete", silent = true },
+    { mode = "n", "<Leader>gtd", gitActions.deleteLocalTag, desc = "Tag delete", silent = true },
+    { mode = "n", "<Leader>gto", gitActions.deleteRemoteTag, desc = "Tag delete remote", silent = true },
 
     -- RESET
     { mode = "n", "<Leader>grH", ":Git reset --hard HEAD~<CR>", desc = "Reset hard head", silent = true },
@@ -60,21 +61,21 @@ return {
     { mode = "n", "<Leader>grS", ":Git reset --soft HEAD~<CR>", desc = "Reset soft head", silent = true },
     { mode = "n", "<Leader>grp", ":Git reset --patch<CR>", desc = "Reset patch", silent = true },
     { mode = "n", "<Leader>grr", ":Git reset<CR>", desc = "Reset", silent = true },
-    { mode = "n", "<Leader>grO", gitActions.resetHardOrigin, desc = "Reset origin", silent = true },
-    { mode = "n", "<Leader>grB", gitActions.restHardBranch, desc = "Reset branch", silent = true },
+    { mode = "n", "<Leader>grO", gitActions.resetBranchHardWithOrigin, desc = "Reset origin", silent = true },
+    { mode = "n", "<Leader>grB", gitActions.resetHardWithBranch, desc = "Reset branch", silent = true },
     { mode = "n", "<Leader>grt", ":Git restore -p<CR>", desc = "Restore patch" },
     { mode = "n", "<Leader>grT", ":Git restore .<CR>", desc = "Restore all" },
     { mode = "n", "<Leader>grD", ":Git restore", desc = "Restore glob" },
 
     -- BRANCH
-    { mode = "n", "<Leader>gbD", gitActions.deleteBranch, desc = "Branch delete" },
+    { mode = "n", "<Leader>gbD", gitActions.deleteLocalBranch, desc = "Branch delete" },
     { mode = "n", "<Leader>gbb", ":Git branch<CR>", desc = "Branch list", silent = true },
     { mode = "n", "<Leader>gbr", gitActions.renameCurrentBranch, desc = "Branch rename" },
     { mode = "n", "<Leader>gbm", gitActions.mergeBranch, desc = "Branch merge", silent = true },
-    { mode = "n", "<Leader>gbr", gitActions.rebaseBranch, desc = "Branch rebase", silent = true },
+    { mode = "n", "<Leader>gbr", gitActions.rebaseWithBranch, desc = "Branch rebase", silent = true },
     { mode = "n", "<Leader>gbP", ":Git pull --rebase<CR>", desc = "Branch pull rebase", silent = true },
     { mode = "n", "<Leader>gbp", ":Git pull<CR>", desc = "Branch pull", silent = true },
-    { mode = "n", "<Leader>gbO", gitActions.deleteOriginBranch, desc = "Branch delete remote" },
+    { mode = "n", "<Leader>gbO", gitActions.deleteRemoteBranch, desc = "Branch delete remote" },
     { mode = "n", "<Leader>gbo", ":Git remote add origin", desc = "Branch delete remote" },
     { mode = "n", "<Leader>gbs", gitActions.syncBranchWithRemote, desc = "Branch Synch" },
 

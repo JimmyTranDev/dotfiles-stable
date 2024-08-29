@@ -59,19 +59,14 @@ alias c="clear"
 alias e="exit"
 alias n="nvim"
 alias y="yazi"
-alias gD="cd ~/Programming/bank-documentation;nvim"
-alias gd="cd ~/Programming/dotfiles;nvim"
-alias gn="cd ~/Programming/notes.md;nvim"
-alias gw="cd ~/Programming/work-logs.md;nvim"
-alias gp="cd ~/Programming"
+alias pc="cd ~/Programming/bank-documentation;nvim"
+alias pd="cd ~/Programming/dotfiles;nvim"
+alias ps="cd ~/Programming/dotfiles-stable;nvim"
+alias pn="cd ~/Programming/notes.md;nvim"
+alias pw="cd ~/Programming/work-logs.md;nvim"
+alias pp="cd ~/Programming"
 
 ##########################################################
-# function yazi_media() {
-#   yazi /run/media/jimmy/HDD\ 20TB/
-# }
-# zle -N yazi_media
-# bindkey '^m' yazi_media
-
 function select_project() {
   local selected_project=$(ls ~/Programming/ | fzf)
   cd "$HOME/Programming/$selected_project"
@@ -80,20 +75,6 @@ function select_project() {
 
 zle -N select_project   
 bindkey '^f' select_project
-
-function open_nvim() {
-  nvim
-}
-
-zle -N open_nvim
-bindkey '^n' open_nvim
-
-function open_yazi() {
-  yazi
-}
-zle -N open_yazi
-bindkey '^y' open_yazi
-
 
 ##########################################################
 

@@ -16,8 +16,6 @@ packages=(
   "firefox"
   "kitty"
   "tmux"
-  "zellij"
-  "alacritty"
 
   # Utils
   "unzip"
