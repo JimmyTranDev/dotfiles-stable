@@ -9,6 +9,7 @@ aur_packages=(
   "fnm"
   "python-detect-secrets"
   "hyprshot"
+  "surfshark-client"
 )
 
 for i in "${aur_packages[@]}"; do

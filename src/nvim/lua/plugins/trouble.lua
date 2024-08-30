@@ -7,39 +7,39 @@ return {
       desc = "Diagnostics (Trouble)",
     },
     {
-      "gk",
+      "gu",
       "<cmd>Trouble lsp_references win.type = split focus=true  win.position=top<cr>",
-      desc = "Diagnostics (Trouble)",
+      desc = "Lsp References",
     },
     {
       "gs",
       "<cmd>Trouble lsp_document_symbols win.type = split focus=true  win.position=top<cr>",
-      desc = "Diagnostics (Trouble)",
+      desc = "Lsp Document Symbols",
     },
     {
       "gi",
       "<cmd>Trouble lsp_implementations win.type = split focus=true  win.position=top<cr>",
-      desc = "Diagnostics (Trouble)",
+      desc = "Lsp Implementations",
     },
     {
       "gw",
       "<cmd>Trouble lsp_workspace_symbols win.type = split focus=true win.position=top<cr>",
-      desc = "Diagnostics (Trouble)",
+      desc = "Lsp Workspace Symbols",
     },
     {
       "gW",
       "<cmd>Trouble lsp_dynamic_workspace_symbols win.type = split focus=true  win.position=top<cr>",
-      desc = "Diagnostics (Trouble)",
+      desc = "Lsp Dynamic Workspace Symbols",
     },
     {
       "gd",
       "<cmd>Trouble lsp_definitions win.type = split focus=true  win.position=top<cr>",
-      desc = "Diagnostics (Trouble)",
+      desc = "Lsp Definitions",
     },
     {
       "gt",
       "<cmd>Trouble lsp_type_definitions win.type = split focus=true  win.position=top<cr>",
-      desc = "Diagnostics (Trouble)",
+      desc = "Lsp Type Definitions",
     },
   },
   opts = {

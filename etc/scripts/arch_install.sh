@@ -80,6 +80,7 @@ packages=(
   "jdk17-openjdk"
   "rust"
   "luarocks"
+  "marksman"
 )
 
 sudo pacman -Syu

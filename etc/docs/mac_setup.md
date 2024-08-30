@@ -1,27 +1,9 @@
 # Mac Setup
 
-## Rust & Cargo
+## Homebrew
 
 ```bash
-curl https://sh.rustup.rs -sSf | sh
-```
-
-## Zellij
-
-```bash
-cargo install --locked zellij
-```
-
-## Nvm
-
-```bash
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
-```
-
-## Pnpm
-
-```bash
-curl -fsSL https://get.pnpm.io/install.sh | sh -
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
 ## SDKMAN
@@ -31,29 +13,45 @@ curl -s "https://get.sdkman.io" | bash
 
 ```
 
-## Homebrew
-
-```bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-```
-
 ## Npm Global Packages
 
-````bash
+```bash
 pnpm i -g markserv
-pnpm i -g live-server
-pnpm i -g mjml
-pnpm i -g @fsouza/prettierd
+```
 
 ## Oh my Zsh
+
 ```bash
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-````
+```
 
 ## Add copilot to the Github CLI
+
 gh extension install github/gh-copilot
 
-## Yazi
-ya pack -a dedukun/relative-motions
-ya pack -a yazi-rs/plugins:jump-to-char
-ya pack -a dedukun/bookmarks
+## yabai + skhd
+
+skhd --restart-service
+yabai --start-service
+
+## Fnm install
+
+fnm use 20 | yes
+
+## Disabling sip
+
+1. the Mac into Recovery Mode (hold down command+R during startup).
+
+2. Go to the Utilities menu and open Terminal and type: csrutil disable. This will disable SIP (System Integrity Protection).
+
+3. Reboot into the OS.
+
+4. Open the integrated terminal and type:
+
+```bash
+sudo su
+cd /var/db/ConfigurationProfiles
+rm -rf *
+mkdir Settings
+touch Settings/.profilesAreInstalled
+```
