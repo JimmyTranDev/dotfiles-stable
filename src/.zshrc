@@ -59,12 +59,12 @@ alias c="clear"
 alias e="exit"
 alias n="nvim"
 alias y="yazi"
-alias pc="cd ~/Programming/bank-documentation;nvim"
-alias pd="cd ~/Programming/dotfiles;nvim"
-alias ps="cd ~/Programming/dotfiles-stable;nvim"
-alias pn="cd ~/Programming/notes.md;nvim"
-alias pw="cd ~/Programming/work-logs.md;nvim"
-alias pp="cd ~/Programming"
+alias gc="cd ~/Programming/bank-documentation;nvim"
+alias gd="cd ~/Programming/dotfiles;nvim"
+alias gs="cd ~/Programming/dotfiles-stable;nvim"
+alias gn="cd ~/Programming/notes.md;nvim"
+alias gw="cd ~/Programming/work-logs.md;nvim"
+alias gp="cd ~/Programming"
 
 ##########################################################
 function select_project() {
