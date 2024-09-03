@@ -43,8 +43,8 @@ shift + alt - e : yabai -m space --balance
 
 # stop/start/restart yabai
 shift + alt - q : yabai --stop-service
-shift + alt - s : yabai --start-service
-shift + alt - r : yabai --restart-service
+shift + alt - s : skhd --restart-service
+shift + alt - y : yabai --restart-service
 
 # Not in use
 

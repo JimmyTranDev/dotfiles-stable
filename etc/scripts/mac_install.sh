@@ -21,6 +21,8 @@ brew install tmux
 brew install tree
 brew install yazi
 brew install cocoapods
+brew install mit-scheme
+brew install nushell
 
 # Yazi
 brew install fd
@@ -49,3 +51,6 @@ brew install --cask slack
 brew install --cask surfshark
 brew install --cask thunderbird
 brew install --cask vlc
+brew install --cask raycast
+brew install --cask alfred
+brew install --cask racket

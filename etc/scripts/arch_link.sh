@@ -1,3 +1,7 @@
+if [ ! -d $HOME/.config ]; then
+  mkdir $HOME/.config
+fi
+
 configDirs=(
   "kitty"
   "nvim"

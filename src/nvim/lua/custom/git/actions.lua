@@ -186,12 +186,26 @@ local function addTag()
   if tagName == "" then
     return
   end
-  vim.cmd("Git tag " .. tagName)
+
+  local message = inputUtils.getInputFromUser("Tag Message: ")
+  if tagName == "" then
+    return
+  end
+
+  if message == "" then
+    vim.cmd("Git tag -f " .. tagName)
+  end
+
+  vim.cmd("Git tag -f -a " .. tagName .. " -m " .. message)
 end
 
 local function addTagToHash()
   local tagName = inputUtils.getInputFromUser("Tag Name: ")
+  if tagName == "" then
+    return
+  end
   local commitLines, commitLineToSha = gitUtils.getCommitLineToSha(false)
+  local message = inputUtils.getInputFromUser("Tag Message: ")
 
   vim.ui.select(commitLines, {
     prompt = "Select commit to tag:",
@@ -201,12 +215,17 @@ local function addTagToHash()
     end
 
     local sha = commitLineToSha[commitLine]
-    vim.cmd("Git tag " .. tagName .. " " .. sha)
+    if message == "" then
+      vim.cmd("Git tag -f " .. tagName .. " " .. sha)
+      return
+    end
+
+    vim.cmd("Git tag -f -a " .. tagName .. " -m " .. message .. " " .. sha)
   end)
 end
 
 local function deleteRemoteTag()
-  local tags = gitUtils.getTags()
+  local tags = gitUtils.getRemoteTags()
   vim.ui.select(tags, {
     prompt = "Select tag to delete:",
   }, function(tag)

@@ -33,6 +33,7 @@ export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
 export GTK_THEME=catppuccin-mocha-blue-standard+default-dark 
 # export ANDROID_HOME="$HOME/Android/Sdk"
 
+
 # User configuration
 export MANPATH="/usr/local/man:$MANPATH"
 export LANG=en_US.UTF-8
@@ -65,6 +66,7 @@ alias gs="cd ~/Programming/dotfiles-stable;nvim"
 alias gn="cd ~/Programming/notes.md;nvim"
 alias gw="cd ~/Programming/work-logs.md;nvim"
 alias gp="cd ~/Programming"
+alias w="yabai --restart-service; skhd --restart-service"
 
 ##########################################################
 function select_project() {

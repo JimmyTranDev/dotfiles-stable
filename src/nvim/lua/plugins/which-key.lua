@@ -109,7 +109,7 @@ return {
       { "<leader>a", desc = " Burn" },
       { "<leader>b", desc = " Database" },
       { "<leader>c", desc = "󰞇 Git Conflict" },
-      { "<leader>d", desc = "_" },
+      { "<leader>d", desc = "󰃤 Debugger" },
       { "<leader>e", desc = "󰁴 Oil" },
       { "<leader>f", desc = " Telescope" },
       { "<leader>g", desc = "󰊢 Git" },
@@ -133,7 +133,7 @@ return {
       { "<leader>W", desc = " Write All" },
       { "<leader>w", desc = " Write" },
       { "<leader>x", desc = "_" },
-      { "<leader>y", desc = "󰃤 Debugger" },
+      { "<leader>y", desc = "_" },
       { "<leader>z", desc = "󰒲 Lazy" },
       { "<leader> ", desc = "󱁐 Space" },
     }, { prefix = "<leader>" })

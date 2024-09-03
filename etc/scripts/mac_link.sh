@@ -1,3 +1,7 @@
+if [ ! -d $HOME/.config ]; then
+  mkdir $HOME/.config
+fi
+
 configsDirs=(
   "kitty"
   "nvim"
@@ -20,7 +24,7 @@ homeDirs=(
 )
 
 for dir in ${homeDirs[@]}; do
-  rm $HOME/$dir 
+  rm -r $HOME/$dir 
   ln -s $HOME/Programming/dotfiles/src/$dir $HOME
 done
 

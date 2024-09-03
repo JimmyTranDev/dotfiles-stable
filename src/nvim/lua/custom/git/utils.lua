@@ -41,15 +41,20 @@ end
 
 
 local function getTags()
-  local fugitive_command = "git tag -l"
+  local fugitive_command = "git tag -l | tail -r"
   local tags = vim.fn.systemlist(fugitive_command)
   return tags
 end
 
--- NOTE: does not work
 local function getTagsRemote()
   local fugitive_command = "git ls-remote --tags"
-  local tags = vim.fn.systemlist(fugitive_command)
+  local tagLines = vim.fn.systemlist(fugitive_command)
+  local tags = {}
+  for _, tagLine in ipairs(tagLines) do
+    local tag = string.match(tagLine, "refs/tags/(.*)")
+    table.insert(tags, tag)
+  end
+
   return tags
 end
 
