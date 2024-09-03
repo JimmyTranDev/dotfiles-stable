@@ -32,7 +32,6 @@ return {
         "pyright",
         "rust_analyzer",
         "tsserver",
-        -- "nil_ls",
       },
     })
 
@@ -53,7 +52,7 @@ return {
       "pyright",
       "rust_analyzer",
       "tsserver",
-      -- "nil_ls",
+      "scheme_langserver",
     }
     for _, lsp in ipairs(lsp_servers) do
       lspConfig[lsp].setup({

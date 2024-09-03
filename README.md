@@ -2,7 +2,6 @@
 
 This is my personal dotfiles repository.
 It contains all the configuration files for my development environment.
-The repository is organized in a way that makes it easy to install and manage the configuration files.
 The repository is organized in the following way:
 
 ## HomeOS
@@ -22,6 +21,7 @@ The repository is organized in the following way:
 1. MacOS - Operating system used at work
 1. Yabai - Tilling window manager
 1. Skhd - Hotkey daemon
+1. Raycast - Runner
 
 ## Development
 
@@ -33,3 +33,15 @@ The repository is organized in the following way:
 1. Zsh - Shell
 1. Nushell - Shell
 1. Yazi - Terminal File Manager
+
+## Install Scripts
+
+These are the scripts that install packages and link the configuration files to the correct location.
+
+[Click Here](https://github.com/JimmyTranDev/dotfiles-stable/tree/main/etc/scripts)
+
+## Neovim Plugins
+
+These are the plugins that I use in my Neovim configuration.
+
+[Click Here](https://github.com/JimmyTranDev/dotfiles-stable/tree/main/src/nvim/lua/plugins)
